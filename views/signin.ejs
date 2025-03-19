@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In</title>
+  <link rel="stylesheet" href="/css/login_Andy copy.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Créer un compte</h1>
+    <!-- Formulaire d'inscription -->
+    <form action="/signin" method="POST">
+     
+      <input type="text" name="name" placeholder="Nom" required>
+      <input type="text" name="prenom" placeholder="prenom" required>
+     
+      <!-- Champ Nom d'utilisateur -->
+      <input type="text" name="username" placeholder="Nom d'utilisateur" required>
+      
+      
+      <!-- Champ Adresse e-mail -->
+       <div class="container-email">
+        <input type="email" name="email" placeholder="Adresse e-mail" required>
+       </div>
+       
+      <!-- Champ Mot de passe avec icône -->
+      <div class="password-container">
+        <input type="password" id="password" name="password" placeholder="Mot de passe" required>
+        <span class="toggle-password" onclick="togglePasswordVisibility()">👁️</span>
+      </div>
+
+      <!-- Bouton S'inscrire -->
+      <button type="submit" class="btn">S'inscrire</button>
+    </form>
+
+    <!-- Lien de retour -->
+    <a href="/">Retour à l'accueil</a>
+  </div>
+
+  <!-- Script pour basculer la visibilité du mot de passe -->
+  <script>
+    function togglePasswordVisibility() {
+      const passwordField = document.getElementById('password');
+      const toggleIcon = document.querySelector('.toggle-password');
+      
+      // Basculer entre 'password' et 'text'
+      const type = passwordField.type === 'password' ? 'text' : 'password';
+      passwordField.type = type;
+
+      // Modifier l'icône en fonction de l'état
+      toggleIcon.textContent = type === 'password' ? '👁️' : '🙈';
+    }
+  </script>
+</body>
+</html>

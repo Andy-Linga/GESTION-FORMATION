@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(../fond/former.jpg) ; /* Lien vers l'image d'arrière-plan */
+  background-size: cover; /* L'image couvre tout l'écran */
+  background-position: center; /* Centrer l'image */
+  background-repeat: no-repeat; /* Ne pas répéter l'image */
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.cont {
+  position: absolute; /* Positionnement absolu */
+  top: 0; /* Place en haut de la page */
+  left: 0; /* Aligné à gauche */
+  width: 100%; /* Prend toute la largeur */
+  background-color: rgba(0, 0, 0, 0.7); /* Fond semi-transparent */
+  color: white;
+  text-align: center;
+  padding: 20px 0; /* Espacement interne vertical */
+  z-index: 1000; /* Assure que ce div est au-dessus */
+}
+
+
+  
+  .container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9); /* Fond blanc semi-transparent */
+    padding: 20px;
+    width: 100%;
+    /*max-width: 600px; /* Limite de largeur pour éviter un trop grand conteneur */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+  
+  header h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: #2c3e50;
+  }
+  
+  header p {
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #7f8c8d;
+  }
+  
+  .buttons {
+    margin-top: 20px;
+  }
+  
+  .btn {
+    display: inline-block;
+    text-decoration: none;
+    background: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+  }
+  
+  .btn:hover {
+    background: #2980b9;
+  }
+  
+  footer {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: #95a5a6;
+  }
+  

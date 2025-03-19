@@ -1,0 +1,70 @@
+<%- include('layout/header') %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 mx-auto mt-4">
+            <div class="card shadow">
+                <div class="card-header bg-success">
+                    <h3 class="text-light">Modifier le Participant(<%=user.name%>)</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form action="/update/<%= user._id %>" method="post" id="add-form" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="name">Matricule</label>
+                            <input type="text" name="matricule" class="form-control form-control-lg" placeholder="Enter matricule"  value="<%= user.matricule %>" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" class="form-control form-control-lg" placeholder="Enter name"  value="<%= user.name %>" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="name">Prenom</label>
+                            <input type="text" name="prenom" class="form-control form-control-lg" placeholder="Enter prenom" value="<%= user.prenom %>" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" class="form-control form-control-lg" placeholder="Enter email" value="<%= user.email %>" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="profile">Profil</label>
+                            <select name="profile" class="form-control form-control-lg" required>
+                                <option value="" disabled selected>Choisir un profil</option>
+                                <% profiles.forEach(profile => { %>
+                                    <option value="<%= profile._id %>"><%= profile.libelle %></option>
+                                <% }) %>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="phone">Date de Naissance</label>
+                            <input type="date" name="date" class="form-control form-control-lg" placeholder="Enter phone" value="<%= user.date %>" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Select Image</label>
+                            <input class="form-control form-control-lg" type="file" name="image"  />
+                            <img src="/<%= user.image %>" width="100" class="img-thumbnail mt-1">
+                        </div>
+                        
+                        <input type="hidden" name="old_image" value="<%=user.image %>"> 
+                        
+                        <div class="mb-3 d-grid">
+                            <input type="submit" name="submit" value="Mettre à jour" class="btn btn-success btn-lg" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<%- include('layout/footer') %>
+
+    
+   
+   
+   
+   
+   
+ 

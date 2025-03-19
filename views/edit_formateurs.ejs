@@ -1,0 +1,63 @@
+<%- include('layout/header') %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 mx-auto mt-4">
+            <div class="card shadow">
+                <div class="card-header bg-success">
+                    <h3 class="text-light">Modifier le formateur (<%= formateur.name %>)</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form action="/update_formateurs/<%= formateur._id %>" method="post" id="add-form" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="name">Matricule</label>
+                            <input type="text" name="matricule" class="form-control form-control-lg" placeholder="Enter matricule"  value="<%= formateur.matricule %>" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="name">Nom</label>
+                            <input type="text" name="name" class="form-control form-control-lg" placeholder="Enter name"  value="<%= formateur.name %>" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="prenom">Prenom</label>
+                            <input type="text" name="prenom" class="form-control form-control-lg" placeholder="Enter prenom" value="<%= formateur.prenom %>" required />
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="domaine">Domaine</label>
+                            <select name="domaine" class="form-control form-control-lg" required>
+                                <option value="" disabled selected>Choisir un domaine</option>
+                                <% domaines.forEach(domaine => { %>
+                                    <option value="<%= domaine._id %>"><%= domaine.libelle %></option>
+                                <% }) %>
+                            </select>
+                        </div>
+                        
+                        
+                        <div class="mb-3">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" class="form-control form-control-lg" placeholder="Enter email" value="<%= formateur.email %>" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone">Télephone</label>
+                            <input type="tel" name="phone" maxlength="8" class="form-control form-control-lg" placeholder="Enter phone" value="<%= formateur.phone %>" required />
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Select Image</label>
+                            <input class="form-control form-control-lg" type="file" name="image" />
+                            <img src="/<%= formateur.image %>" width="100" class="img-thumbnail mt-1">
+                        </div>
+                        
+                        <input type="hidden" name="old_image" value="<%= formateur.image %>"> 
+                        
+                        <div class="mb-3 d-grid">
+                            <input type="submit" name="submit" value="Mettre à jour" class="btn btn-success btn-lg" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('layout/footer') %>

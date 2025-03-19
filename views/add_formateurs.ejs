@@ -1,0 +1,59 @@
+<%- include('layout/header') %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 mx-auto mt-4">
+            <div class="card shadow">
+                <div class="card-header bg-primary">
+                    <h3 class="text-light">Ajouter un nouveau Formateur(trice)</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form action="/addFormateur" method="post" id="add-form" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="matricule">Matricule</label>
+                            <input type="text" name="matricule" class="form-control form-control-lg" placeholder="Entrez le matricule" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="name">Nom</label>
+                            <input type="text" name="name" class="form-control form-control-lg" placeholder="Entrez le nom" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="prenom">Prenom</label>
+                            <input type="text" name="prenom" class="form-control form-control-lg" placeholder="Entrez prenom" required />
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="domaine">Domaine</label>
+                            <select name="domaine" class="form-control form-control-lg" required>
+                                <option value="" disabled selected>Choisir un domaine</option>
+                                <% domaines.forEach(domaine => { %>
+                                    <option value="<%= domaine._id %>"><%= domaine.libelle %></option>
+                                <% }) %>
+                            </select>
+                        </div>
+                        
+                        
+                        <div class="mb-3">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" class="form-control form-control-lg" placeholder="Entrez email" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone">Télephone</label>
+                            <input type="tel" maxlength="8" name="phone" class="form-control form-control-lg" placeholder="Entrez le numero de telephone" required />
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Selectionnez l'image de profil</label>
+                            <input class="form-control form-control-lg" type="file" name="image" required />
+                        </div>
+                        <div class="mb-3 d-grid">
+                            <input type="submit" name="submit" value="Ajouter" class="btn btn-primary btn-lg" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('layout/footer') %>

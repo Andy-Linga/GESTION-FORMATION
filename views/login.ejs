@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connexion</title>
+  <link rel="stylesheet" href="/css/login_Andy.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Connexion</h1>
+    <% if (error) { %>
+      <p class="error-message"><%= error %></p>
+  <% } %>
+
+    <form action="/login" method="POST">
+    
+      <input type="text" name="usernameOrEmail" placeholder="Nom d'utilisateur ou Email" required>
+      
+      
+     
+      <div class="password-container">
+        <input type="password" id="password" name="password" placeholder="Mot de passe" required>
+        <span class="toggle-password" onclick="togglePasswordVisibility()">👁️</span>
+      </div>
+
+  
+      <button type="submit" class="btn">Se connecter</button>
+    </form>
+
+    <a href="/signin">N'Avez Vous pas de Compte ? Inscrivez Vous</a>
+    <a href="/">Retour à l'accueil</a>
+    
+  </div>
+
+  <!-- Script pour basculer la visibilité du mot de passe -->
+  <script>
+    function togglePasswordVisibility() {
+      const passwordField = document.getElementById('password');
+      const toggleIcon = document.querySelector('.toggle-password');
+      
+      // Basculer entre 'password' et 'text'
+      const type = passwordField.type === 'password' ? 'text' : 'password';
+      passwordField.type = type;
+
+      // Modifier l'icône en fonction de l'état
+      toggleIcon.textContent = type === 'password' ? '👁️' : '🙈';
+    }
+  </script>
+</body>
+</html>

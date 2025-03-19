@@ -1,0 +1,103 @@
+<%- include('layout/header5') %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 mx-auto mt-4">
+            <div class="card shadow">
+                <div class="card-header bg-primary">
+                    <h3 class="text-light">Ajouter Une Nouvelle Formation</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form action="/addFormation" method="post" id="add-form" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="code_formation">Code Formation</label>
+                            <input type="text" name="code_formation" class="form-control form-control-lg" placeholder="Enter code formation" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="intitule">Intitulé</label>
+                            <input type="text" name="intitule" class="form-control form-control-lg" placeholder="Enter intitule" required />
+                        </div>
+                       
+                        <div class="mb-3">
+                            <label for="domaine">Domaine</label>
+                            <select name="domaine" class="form-control form-control-lg" required>
+                                <option value="" disabled selected>Choisir un domaine</option>
+                                <% domaines.forEach(domaine => { %>
+                                    <option value="<%= domaine._id %>"><%= domaine.libelle %></option>
+                                <% }) %>
+                            </select>
+                        </div> 
+
+                        <div class="mb-3">
+                            <label for="nombre_jours">Nombre de jours</label>
+                            <input type="number" name="nombre_jours" class="form-control form-control-lg" placeholder="Enter nombre de jours" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="annee">Année</label>
+                            <input type="number" name="annee" class="form-control form-control-lg" placeholder="Enter année" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="mois">Mois</label>
+                            <select name="mois" class="form-control form-control-lg" required>
+                                <option value="" disabled selected>Sélectionnez un mois</option>
+                                <option value="janvier">Janvier</option>
+                                <option value="fevrier">Février</option>
+                                <option value="mars">Mars</option>
+                                <option value="avril">Avril</option>
+                                <option value="mai">Mai</option>
+                                <option value="juin">Juin</option>
+                                <option value="juillet">Juillet</option>
+                                <option value="aout">Août</option>
+                                <option value="septembre">Septembre</option>
+                                <option value="octobre">Octobre</option>
+                                <option value="novembre">Novembre</option>
+                                <option value="decembre">Décembre</option>
+                            </select>
+                        </div>
+                        
+
+                        <div class="mb-3">
+                            <label for="formateur">Formateur</label>
+                            <select name="formateur" class="form-control form-control-lg" required>
+                                <option value="" disabled selected>Choisir un formateur</option>
+                                <% formateurs.forEach(formateur => { %>
+                                    <option value="<%= formateur._id %>"><%= formateur.name %></option>
+                                <% }) %>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="nombre_participants">Participants (Sélectionner au moins 4)</label>
+                            <select name="nombre_participants" class="form-control form-control-lg" multiple required>
+                                <option value="" disabled selected>Sélectionner des participants</option>
+                                <% users.forEach(user => { %>
+                                    <option value="<%= user._id %>"><%= user.name %></option>
+                                <% }) %>
+                            </select>
+                            <small class="text-muted">Sélectionnez au moins 4 participants.</small>
+                        </div>
+
+                        <div class="mb-3 d-grid">
+                            <input type="submit" name="submit" value="Ajouter" class="btn btn-primary btn-lg" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('layout/footer') %>
+
+<script>
+    // Validation pour vérifier que l'utilisateur a sélectionné au moins 4 participants
+    document.getElementById("add-form").addEventListener("submit", function(event) {
+        const participants = document.querySelector("select[name='nombre_participants']").selectedOptions;
+        if (participants.length < 4) {
+            event.preventDefault(); // Empêche la soumission du formulaire
+            alert("Vous devez sélectionner au moins 4 participants.");
+        }
+    });
+</script>
